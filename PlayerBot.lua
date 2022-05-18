@@ -1,9 +1,9 @@
-local Mangosbot_EventFrame = CreateFrame("Frame")
-Mangosbot_EventFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
-Mangosbot_EventFrame:RegisterEvent("CHAT_MSG_WHISPER")
-Mangosbot_EventFrame:RegisterEvent("CHAT_MSG_SYSTEM")
-Mangosbot_EventFrame:RegisterEvent("UPDATE")
-Mangosbot_EventFrame:Hide()
+local PlayerBot_EventFrame = CreateFrame("Frame")
+PlayerBot_EventFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
+PlayerBot_EventFrame:RegisterEvent("CHAT_MSG_WHISPER")
+PlayerBot_EventFrame:RegisterEvent("CHAT_MSG_SYSTEM")
+PlayerBot_EventFrame:RegisterEvent("UPDATE")
+PlayerBot_EventFrame:Hide()
 
 local ToolBars = {}
 function CreateToolBar(frame, y, name, buttons, x, spacing, register)
@@ -61,7 +61,7 @@ function CreateToolBar(frame, y, name, buttons, x, spacing, register)
         image:SetWidth(16)
         image:SetHeight(16)
         image.texture = image:CreateTexture(nil, "BACKGROUND")
-        local filename = "Interface\\Addons\\Mangosbot\\Images\\" .. button["icon"] .. ".tga"
+        local filename = "Interface\\Addons\\PlayerBot\\images\\" .. button["icon"] .. ".tga"
         image.texture:SetTexture(filename)
         image.texture:SetAllPoints()
         btn.image = image
@@ -201,7 +201,7 @@ function CreateBotRoster()
         cls:SetWidth(16)
         cls:SetHeight(16)
         cls.texture = cls:CreateTexture(nil, "BACKGROUND")
-        cls.texture:SetTexture("Interface\\Addons\\Mangosbot\\Images\\role_dps.tga")
+        cls.texture:SetTexture("Interface\\Addons\\PlayerBot\\images\\role_dps.tga")
         cls.texture:SetAllPoints()
         item.cls = cls
 
@@ -335,7 +335,7 @@ function CreateSelectedBotPanel()
     frame.header.role:SetWidth(16)
     frame.header.role:SetHeight(16)
     frame.header.role.texture = frame.header.role:CreateTexture(nil, "BACKGROUND")
-    frame.header.role.texture:SetTexture("Interface/Addons/Mangosbot/Images/role_dps.tga")
+    frame.header.role.texture:SetTexture("Interface/Addons/PlayerBot/Images/role_dps.tga")
     frame.header.role.texture:SetAllPoints()
 
     EnablePositionSaving(frame, "SelectedBotPanel")
@@ -910,7 +910,7 @@ local botTable = {}
 SelectedBotPanel = CreateSelectedBotPanel();
 BotRoster = CreateBotRoster();
 
-Mangosbot_EventFrame:SetScript("OnEvent", function(self, event, ...)
+PlayerBot_EventFrame:SetScript("OnEvent", function(self, event, ...)
     local arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9 = ...
     -- print(event)
     if (event == "PLAYER_TARGET_CHANGED") then
@@ -953,7 +953,7 @@ Mangosbot_EventFrame:SetScript("OnEvent", function(self, event, ...)
 
                 item.text:SetText(key)
 
-                local filename = "Interface\\Addons\\Mangosbot\\Images\\cls_" .. bot["class"]:lower() ..".tga"
+                local filename = "Interface\\Addons\\PlayerBot\\images\\cls_" .. bot["class"]:lower() ..".tga"
                 item.cls.texture:SetTexture(filename)
 
                 local color = RAID_CLASS_COLORS[bot["class"]:upper()]
@@ -993,10 +993,10 @@ Mangosbot_EventFrame:SetScript("OnEvent", function(self, event, ...)
                     allBotsLoggedIn = false
                 end
                 loginBtn:SetScript("OnClick", function()
-                    SendChatMessage(".bot add " .. key, "SAY")
+                    SendChatMessage(".playerbot bot add " .. key, "SAY")
                 end)
                 logoutBtn:SetScript("OnClick", function()
-                    SendChatMessage(".bot rm " .. key, "SAY")
+                    SendChatMessage(".playerbot bot rm " .. key, "SAY")
                 end)
                 inviteBtn:SetScript("OnClick", function()
                     InviteUnit(key)
@@ -1041,7 +1041,7 @@ Mangosbot_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 loginAllBtn:Hide()
             end
             loginAllBtn:SetScript("OnClick", function()
-                SendChatMessage(".bot add " .. allBots, "SAY")
+                SendChatMessage(".playerbot bot add " .. allBots, "SAY")
             end)
 
             local logoutAllBtn = tb.buttons["logout_all"]
@@ -1053,7 +1053,7 @@ Mangosbot_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 logoutAllBtn:Hide()
             end
             logoutAllBtn:SetScript("OnClick", function()
-                SendChatMessage(".bot rm " .. allBots, "SAY")
+                SendChatMessage(".playerbot bot rm " .. allBots, "SAY")
             end)
 
             local inviteAllBtn = tb.buttons["invite_all"]
@@ -1070,7 +1070,7 @@ Mangosbot_EventFrame:SetScript("OnEvent", function(self, event, ...)
                     wait(timeout, function() InviteUnit(key) end)
                     timeout = timeout + 0.1
                 end
-                wait(1, function() SendChatMessage(".bot list", "SAY") end)
+                wait(1, function() SendChatMessage(".playerbot bot list", "SAY") end)
             end)
 
             local leaveAllBtn = tb.buttons["leave_all"]
@@ -1098,7 +1098,7 @@ Mangosbot_EventFrame:SetScript("OnEvent", function(self, event, ...)
         OnWhisper(message, sender)
 
         if (string.find(message, "Hello") == 1 or string.find(message, "Goodbye") == 1) then
-            SendChatMessage(".bot list", "SAY")
+            SendChatMessage(".playerbot bot list", "SAY")
         end
 
         local bot = botTable[sender]
@@ -1113,7 +1113,7 @@ Mangosbot_EventFrame:SetScript("OnEvent", function(self, event, ...)
             local tmp, class = UnitClass("target")
             SetFrameColor(SelectedBotPanel, class)
 
-            local filename = "Interface\\Addons\\Mangosbot\\Images\\role_" .. bot["role"] .. ".tga"
+            local filename = "Interface\\Addons\\PlayerBot\\images\\role_" .. bot["role"] .. ".tga"
             SelectedBotPanel.header.role.texture:SetTexture(filename)
             SelectedBotPanel.header.text:SetText(sender)
 
@@ -1234,13 +1234,13 @@ function OnSystemMessage(message)
     return false
 end
 
-SLASH_MANGOSBOT1 = '/bot'
-function SlashCmdList.MANGOSBOT(msg, editbox) -- 4.
+SLASH_PlayerBot1 = '/bot'
+function SlashCmdList.PlayerBot(msg, editbox) -- 4.
     if (msg == "" or msg == "roster") then
         if (BotRoster:IsVisible()) then
             BotRoster:Hide()
         else
-            SendChatMessage(".bot list", "SAY")
+            SendChatMessage(".playerbot bot list", "SAY")
         end
     end
 end
@@ -1276,4 +1276,4 @@ function wait(delay, func, ...)
   return true;
 end
 
-print("MangosBOT Addon is loaded");
+print("PlayerBot Addon is loaded");
