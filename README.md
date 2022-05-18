@@ -19,6 +19,6 @@ Type `/bot` into the WoW chat bar to bring up the roster window.
 
 ![Screenshot](screenshots/bot_roster.png)
 
-Click the icon next to the bot's name to bring up the control window.
+Click on the bot character, making him your target, to bring up the control window.
 
 ![Screenshot](screenshots/bot_controls.png)
