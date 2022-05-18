@@ -578,28 +578,28 @@ function CreateSelectedBotPanel()
     CreateToolBar(frame, -y, "CLASS_DRUID", {
         ["bear"] = {
             icon = "bear",
-            command = {[0] = "co +bear,?"},
+            command = {[0] = "co ~bear,?"},
             strategy = "bear",
             tooltip = "Use bear form",
             index = 0
         },
         ["cat"] = {
             icon = "cat",
-            command = {[0] = "co +cat,?"},
+            command = {[0] = "co ~cat,?"},
             strategy = "cat",
             tooltip = "Use cat form",
             index = 1
         },
         ["caster"] = {
             icon = "caster",
-            command = {[0] = "co +caster,?"},
+            command = {[0] = "co ~caster,?"},
             strategy = "caster",
             tooltip = "Use caster form",
             index = 2
         },
         ["heal"] = {
             icon = "heal",
-            command = {[0] = "co +heal,?"},
+            command = {[0] = "co ~heal,?"},
             strategy = "heal",
             tooltip = "Healer mode",
             index = 3
