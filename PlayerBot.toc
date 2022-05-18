@@ -1,0 +1,8 @@
+## Interface: 30305
+## Title: PlayerBot
+## Author: ike3 & whipowill
+## Notes: PlayerBot UI
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: frameopts
+PlayerBot.lua
