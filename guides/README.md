@@ -1,5 +1,9 @@
 # Chat Commands
 
+The playerbots are programmed to respond to chat commands.  This addon is designed to make issuing those chat commands easier for the player, but you may still find need for these as you go.
+
+I'm not entirely certain we even know what all the available commands are, but these are the ones I've found so far.  You would issue these in the party or raid chat.
+
 ### Movement
 
 command | action
@@ -13,11 +17,32 @@ command | action
 
 ### Strategies
 
-command | action
+The bots respond to different scenarios by implementing "strategies" that are activated by default or that you have defined for them.  There are different categories of strategies that can be defined:
+
+
+
+category | prefix | strategy | description
 :---|:---
-``co +s1,-s2,~s3,?`` | add, remove, toggle and show combat strategies
-``nc +s1,-s2,~s3,?`` | add, remove, toggle and show non-combat strategies
-``ds +s1,-s2,~s3,?`` | add, remove, toggle and show dead strategies
+formation |
+combat | ``co`` | |
+|| ``tank`` | bot will use threat-generating abilities. Supported classes: warrior, paladin and druid. For druid it also known as ``bear``
+|| ``dps`` |  obvious, less threat, more dps. Supported classes: rogue, hunter, druid, shaman, priest. For druid it also known as cat.
+heal - focus on party healing other that damage or tanking. Supported classes: shaman, priest.
+
+Talent-specific
+frost - Useful only for frost mages.
+fire - Useful only for fire mages.
+bear - Feral tanking druid.
+cat - Feral dps druid.
+caster - Balance dps druid.
+
+Buff stragegies which are intended to be used with the main combat strategy.
+bdps - buffs dps of self and other players. Example: paladin will use seal of might.
+bspeed - buffs movement speed. Only for hunter - allows him to use aspect of the cheetach/pack when not in combat
+bhealth, bmana - buffs health or mana. Example: paladin will use seal of light vs seal of wisdom.
+
+Resistance stragegies are some kind of buff strategies, but affects magic resistance so moved to separate group.
+rfire, rfrost, rshadow, rnature - supported only for paladin auras and hunter aspects.
 
 ### Items
 
@@ -60,6 +85,8 @@ command | action
 ``revive`` | revive when near a spirit healer
 
 ### Reactions
+
+The bots will automatically do certain things based on what the party leader is doing.
 
 your action | bot reaction
 :---|:---
