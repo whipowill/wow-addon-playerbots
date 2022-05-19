@@ -6,19 +6,19 @@ The bots are programmed to respond to chat commands.  The game addon is designed
 
 command | action
 :---|:---
-``.playerbots bot add name1,name2,name3`` | login these alts
-``.playerbots bot remove name1,name2,name3`` | logout these alts
+``.playerbots bot add name1,name2,name3`` | login alts
+``.playerbots bot remove name1,name2,name3`` | logout alts
 ``.playerbots bot add *`` |  login all alts
 ``.playerbots bot remove *`` | logout all alts
-``.playerbots bot init=rare name1,name2,name3`` | respawn w/ your level, max talents, and rare gear (random bots only)
+``.playerbots bot init=rare name1,name2,name3`` | respawn @ your level w/ max talents & rare gear (random bots only)
 
 ## Behavior
 
 The bots are programmed to respond to triggers by listing possible actions and choosing one based on a strategy:
 
-- trigger - something has occured
-- action - something the bot can do
-- stragegy - which action is the best action
+- triggers - what is happening
+- actions - what can the bot do
+- stragegy - what is the best action
 
 Strategies can be combined, so they merge their effects to produce desired choices.  Bots use two strategy categories: combat and non-combat, depending on combat status.  You can add, subtract, or toggle strategies using the combat and non-combat prefixes in your commands:
 
@@ -34,30 +34,41 @@ co ?
 nc ?
 ```
 
-Some strategies are incompatible with the others, such as ``stay`` and ``follow``.  If used, all other incompatible strategies will be deactivated.
+You can issue orders and query the bot to report back the orders it received:
 
+```
+co +strategy1,-strategy2,~strategy3,?
+nc +strategy1,-strategy2,~strategy3,?
+```
 
-category | prefix | strategy | description
+### Non-Combat Orders
+
+strategy | description
 :---|:---|:---|:---
-non-combat | ``nc`` | ``tank assist`` | assist party players (including other bots in party) by attacking the most threating target. This is single tanking stategy.
-| | ``tank aoe`` | Frequently switch target between targets. This is AOE tanking strategy. Note: some classes (paladin) will use aoe tanking abilities in combat so tank assist can have the same effect as tank aoe.
-| | ``dps assist`` | Assist party players by attacking more threated target. This is single dps stategy.
-| | ``dps aoe`` | Frequently switch target between less threated targets. This is AOE dps strategy. Note: some classes will use aoe dps abilities in combat so dps assist will do the same as dps aoe.
-| | ``attack weak`` | Always attack the weakest target (target having the least health points) and switch to other one if it is weaker than the current target.
-| | ``grind`` | Attack any visible target, then switch to another one and so on.
-combat | ``co`` | ``tank`` | bot will use threat-generating abilities. supported classes: warrior, paladin and druid. for druid it also known as ``bear``
-| |``dps`` |  obvious, less threat, more dps. supported classes: rogue, hunter, druid, shaman, priest. for druid it also known as cat.
-| |``heal`` | focus on party healing other that damage or tanking. supported classes: shaman, priest.
-| |``frost``, ``fire`` | only for mages
-| | ``bear``, ``cat``, ``caster`` | only for druids
-| | ``bdps`` | buffs dps of self and other players. example: paladin will use seal of might.
-| | ``bspeed`` | buffs movement speed. only for hunter - allows him to use aspect of the cheetach/pack when not in combat
-| | ``bhealth``, ``bmana`` | buffs health or mana. example: paladin will use seal of light vs seal of wisdom.
+``tank assist`` | assist party players (including other bots in party) by attacking the most threating target. This is single tanking stategy.
+``tank aoe`` | Frequently switch target between targets. This is AOE tanking strategy. Note: some classes (paladin) will use aoe tanking abilities in combat so tank assist can have the same effect as tank aoe.
+``dps assist`` | Assist party players by attacking more threated target. This is single dps stategy.
+``dps aoe`` | Frequently switch target between less threated targets. This is AOE dps strategy. Note: some classes will use aoe dps abilities in combat so dps assist will do the same as dps aoe.
+``attack weak`` | Always attack the weakest target (target having the least health points) and switch to other one if it is weaker than the current target.
+``grind`` | Attack any visible target, then switch to another one and so on.
 
-resistance stragegies are some kind of buff strategies, but affects magic resistance so moved to separate group.
-rfire, rfrost, rshadow, rnature - supported only for paladin auras and hunter aspects.
+### Combat Orders
 
-By default tank classes have tank aoe strategy, others have attack weak. This will result in tank holding the threat and dps damaging it, so the combat should be balanced. Anyway do attack action with a target selected will change bot mind and they switch to this target immediately. Althought with tank aoe and dps aoe strategies the bot will switch the target after some time.
+``tank`` | bot will use threat-generating abilities. (warrior, paladin, and druid only)
+``dps`` |  obvious, less threat, more dps. supported classes: rogue, hunter, druid, shaman, priest. for druid it also known as cat.
+``heal`` | focus on party healing (shaman, druid, and priest only)
+``frost``, ``fire`` | mage only
+``bear``, ``cat``, ``caster`` | druid only
+``bdps`` | buff dps (paladin will use seal of might)
+``bspeed`` | buff movement speed (hunter only)
+``bhealth``, ``bmana`` | buff health or mana (paladin will use seal of light vs seal of wisdom)
+``rfire``, ``rfrost``, ``rshadow``, ``rnature`` | resistance stragegies (paladin auras and hunter aspects)
+
+### Defaults
+
+- Tank classes default w/ ``tank aoe``
+- Non-tank classes default w/ ``attack weak``
+- Strategies that are incompatible, such as ``stay`` and ``follow``, are ignored
 
 ## Movement
 
@@ -69,6 +80,21 @@ command | action
 ``d attack my target`` | attack my target
 ``d add all loot`` | check every corpse and game object for loot
 ``grind`` | attack anything
+
+## Loot
+
+You can control which items to loot (``ll`` stands for loot list):
+
+command | action
+:---|:---
+``nc +loot`` | activate looting (note ``grind`` strategy activates looting as well)
+``ll all`` | loot everything
+``ll normal`` | loot anything except BOP (bind-on-pickup) items
+``ll gray`` | loot only gray items
+``ll quest`` |  loot only quest items
+``ll skill`` | loot only items based on their skills (herbalism, mining, or skinning)
+``ll [item]`` | add specific item to loot list
+``ll -[item]`` | remove specific item from loot list
 
 ## Items
 
