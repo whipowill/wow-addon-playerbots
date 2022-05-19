@@ -913,7 +913,7 @@ BotRoster = CreateBotRoster();
 PlayerBot_EventFrame:SetScript("OnEvent", function(self, event, ...)
     local arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9 = ...
     -- print(event)
-    if (event == "PLAYER_TARGET_CHANGED") then
+    if (BotRoster:IsVisible() and event == "PLAYER_TARGET_CHANGED") then
         local name = GetUnitName("target")
         local self = GetUnitName("player")
         if (name == nil or not UnitIsPlayer("target") or name == self or UnitIsEnemy(self, name)) then
@@ -1011,7 +1011,6 @@ PlayerBot_EventFrame:SetScript("OnEvent", function(self, event, ...)
                     editBox:SetText("/w " .. key .. " ")
                 end)
 
-
                 item:Show()
 
                 index = index + 1
@@ -1107,7 +1106,7 @@ PlayerBot_EventFrame:SetScript("OnEvent", function(self, event, ...)
             return
         end
         local selected = GetUnitName("target")
-        if (sender == selected) then
+        if (BotRoster:IsVisible() and sender == selected) then
             SelectedBotPanel:Show()
 
             local tmp, class = UnitClass("target")
@@ -1239,6 +1238,7 @@ function SlashCmdList.PlayerBot(msg, editbox) -- 4.
     if (msg == "" or msg == "roster") then
         if (BotRoster:IsVisible()) then
             BotRoster:Hide()
+            SelectedBotPanel:Hide()
         else
             SendChatMessage(".playerbot bot list", "SAY")
         end
