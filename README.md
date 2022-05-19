@@ -1,4 +1,4 @@
-# PlayerBot Addon
+# PlayerBots Addon
 
 In the WoW private server community there was a guy named [ike3](http://ike3.github.io/mangosbot-docs/) who wrote a bot script that would create robot players in the game.  You could have hundreds of them, and they would run around and fight and do quests, you could party w/ them, and even better you could bring your alts and play with them too.
 
@@ -6,7 +6,7 @@ Efforts are underway to port this bot code to [AzerothCore](http://www.azerothco
 
 ## Install
 
-Download this [zip](https://github.com/whipowill/wow-addon-playerbot/archive/master.zip) into your ``C:\\Games\WoW\Interface\Addons\PlayerBot`` directory.
+Download this [zip](https://github.com/whipowill/wow-addon-playerbot/archive/master.zip) into your ``C:\\Games\WoW\Interface\Addons\PlayerBots`` directory.
 
 ## Usage
 
