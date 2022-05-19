@@ -2,6 +2,8 @@
 
 ## Movement
 
+command | action
+---|---
 ``follow`` | follow master
 ``stay`` | stay in place
 ``flee`` | flee with master (ignore everything else)
@@ -11,12 +13,16 @@
 
 ## Strategies
 
+command | action
+---|---
 ``co +s1,-s2,~s3,?`` | add, remove, toggle and show combat strategies
 ``nc +s1,-s2,~s3,?`` | add, remove, toggle and show non-combat strategies
 ``ds +s1,-s2,~s3,?`` | add, remove, toggle and show dead strategies
 
 ## Items
 
+command | action
+---|---
 ``e [item]`` | equip item
 ``ue [item]`` | unequip item
 ``u [item]`` | use item
@@ -26,6 +32,8 @@
 
 ## Quests
 
+command | action
+---|---
 ``accept [quest]`` | accept quest at the selected quest giver
 ``accept *`` | accept all quests at the selected quest giver
 ``drop [quest]`` | abandon quest
@@ -37,6 +45,8 @@
 
 ## Misc
 
+command | action
+---|---
 ``los`` | enlist game objects, items, creatures and npcs bot can see
 ``stats`` | show stat summary (inventory, gold, xp, etc.)
 ``leave`` | leave party
@@ -52,6 +62,7 @@
 ## Reactions
 
 your action | bot reaction
+---|---
 accept a quest | bot will accept it as well
 talk to a quest giver | bot will turn in his completed quests
 use meeting stone | teleport using the stone
