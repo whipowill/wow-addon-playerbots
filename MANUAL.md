@@ -44,7 +44,7 @@ nc +strategy1,-strategy2,~strategy3,?
 ### Non-Combat Orders
 
 strategy | description
-:---|:---|:---|:---
+:---|:---|
 ``tank assist`` | assist party players (including other bots in party) by attacking the most threating target. This is single tanking stategy.
 ``tank aoe`` | Frequently switch target between targets. This is AOE tanking strategy. Note: some classes (paladin) will use aoe tanking abilities in combat so tank assist can have the same effect as tank aoe.
 ``dps assist`` | Assist party players by attacking more threated target. This is single dps stategy.
@@ -54,6 +54,8 @@ strategy | description
 
 ### Combat Orders
 
+strategy | description
+:---|:---|
 ``tank`` | bot will use threat-generating abilities. (warrior, paladin, and druid only)
 ``dps`` |  obvious, less threat, more dps. supported classes: rogue, hunter, druid, shaman, priest. for druid it also known as cat.
 ``heal`` | focus on party healing (shaman, druid, and priest only)
