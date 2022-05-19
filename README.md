@@ -8,6 +8,10 @@ Efforts are underway to port this bot code to [AzerothCore](http://www.azerothco
 
 Download this [zip](https://github.com/whipowill/wow-addon-playerbot/archive/master.zip) into your ``C:\\Games\WoW\Interface\Addons\PlayerBots`` directory.
 
+## Manual
+
+Be sure to consult the [Operator's Manual](https://github.com/whipowill/wow-addon-playerbots/blob/master/MANUAL.md) for detailed information about how to control the bots.
+
 ## Usage
 
 Type `/bot` into the WoW chat bar to bring up the roster window.
@@ -26,5 +30,5 @@ Click on the bot character, making him your target, to bring up the control wind
 ## References
 
 - [ike3's Announcement](https://www.getmangos.eu/forums/topic/5401-ai-playerbot/)
-- [ike3's Instructions](http://ike3.github.io/mangosbot-docs/)
 - [ike3's Addon Package](https://github.com/ike3/mangosbot-addon)
+- [ike3's Instructions](http://ike3.github.io/mangosbot-docs/)

@@ -71,6 +71,8 @@ strategy | description
 
 ## Movement
 
+I think these commands can be used indepedently or as of ``co`` and ``nc`` strategies:
+
 command | action
 :---|:---
 ``grind`` | attack anything
