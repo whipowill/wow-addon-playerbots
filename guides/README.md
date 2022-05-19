@@ -1,9 +1,9 @@
 # Chat Commands
 
-## Movement
+### Movement
 
 command | action
----|---
+:---|:---
 ``follow`` | follow master
 ``stay`` | stay in place
 ``flee`` | flee with master (ignore everything else)
@@ -11,18 +11,18 @@ command | action
 ``d add all loot`` | check every corpse and game object for loot
 ``grind`` | attack anything
 
-## Strategies
+### Strategies
 
 command | action
----|---
+:---|:---
 ``co +s1,-s2,~s3,?`` | add, remove, toggle and show combat strategies
 ``nc +s1,-s2,~s3,?`` | add, remove, toggle and show non-combat strategies
 ``ds +s1,-s2,~s3,?`` | add, remove, toggle and show dead strategies
 
-## Items
+### Items
 
 command | action
----|---
+:---|:---
 ``e [item]`` | equip item
 ``ue [item]`` | unequip item
 ``u [item]`` | use item
@@ -30,10 +30,10 @@ command | action
 ``destroy [item]`` | destroy item
 ``[item]`` | add to trade window if trading, show if it is useful
 
-## Quests
+### Quests
 
 command | action
----|---
+:---|:---
 ``accept [quest]`` | accept quest at the selected quest giver
 ``accept *`` | accept all quests at the selected quest giver
 ``drop [quest]`` | abandon quest
@@ -43,10 +43,10 @@ command | action
 ``talk`` | talk to the selected npc (to complete a quest)
 ``u [game object]`` | use game object (use los command to obtain the game object link)
 
-## Misc
+### Misc
 
 command | action
----|---
+:---|:---
 ``los`` | enlist game objects, items, creatures and npcs bot can see
 ``stats`` | show stat summary (inventory, gold, xp, etc.)
 ``leave`` | leave party
@@ -59,10 +59,10 @@ command | action
 ``release`` | release spirit when dead
 ``revive`` | revive when near a spirit healer
 
-## Reactions
+### Reactions
 
 your action | bot reaction
----|---
+:---|:---
 accept a quest | bot will accept it as well
 talk to a quest giver | bot will turn in his completed quests
 use meeting stone | teleport using the stone
