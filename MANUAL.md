@@ -18,9 +18,9 @@ The bots are programmed to respond to triggers by listing possible actions and c
 
 - triggers - what is happening
 - actions - what can the bot do
-- stragegy - what is the best action
+- strategy - what is the best action
 
-Strategies can be combined, so they merge their effects to produce desired choices.  Bots use two strategy categories: combat and non-combat, depending on combat status.  You can add, subtract, or toggle strategies using the combat and non-combat prefixes in your commands:
+Strategies can be combined, so they merge their effects to produce desired choices.  Bots use two categories of strategies: combat and non-combat.  You can add, subtract, or toggle strategies using the combat and non-combat prefixes in your commands:
 
 ```
 co +strategy1,-strategy2,~strategy3
@@ -34,31 +34,23 @@ co ?
 nc ?
 ```
 
-You can issue orders and query the bot to report back the orders it received:
+You can issue orders and query the bot to report back at the same time:
 
 ```
 co +strategy1,-strategy2,~strategy3,?
 nc +strategy1,-strategy2,~strategy3,?
 ```
 
-### Non-Combat Orders
+### Combat Strategies
 
 strategy | description
 :---|:---|
-``tank assist`` | assist party players (including other bots in party) by attacking the most threating target. This is single tanking stategy.
-``tank aoe`` | Frequently switch target between targets. This is AOE tanking strategy. Note: some classes (paladin) will use aoe tanking abilities in combat so tank assist can have the same effect as tank aoe.
-``dps assist`` | Assist party players by attacking more threated target. This is single dps stategy.
-``dps aoe`` | Frequently switch target between less threated targets. This is AOE dps strategy. Note: some classes will use aoe dps abilities in combat so dps assist will do the same as dps aoe.
-``attack weak`` | Always attack the weakest target (target having the least health points) and switch to other one if it is weaker than the current target.
+``tank`` | use threat-generating abilities (warrior, paladin, druid will use ``bear``)
+``dps`` |  use dps abilities (rogue, hunter, shaman, priest, druid will use ``cat``)
+``assist`` | target one mob at a time
+``aoe`` | target many mobs at a time
 ``grind`` | Attack any visible target, then switch to another one and so on.
-
-### Combat Orders
-
-strategy | description
-:---|:---|
-``tank`` | bot will use threat-generating abilities. (warrior, paladin, and druid only)
-``dps`` |  obvious, less threat, more dps. supported classes: rogue, hunter, druid, shaman, priest. for druid it also known as cat.
-``heal`` | focus on party healing (shaman, druid, and priest only)
+``heal`` | focus on party healing (shaman, priest, druid)
 ``frost``, ``fire`` | mage only
 ``bear``, ``cat``, ``caster`` | druid only
 ``bdps`` | buff dps (paladin will use seal of might)
@@ -66,11 +58,25 @@ strategy | description
 ``bhealth``, ``bmana`` | buff health or mana (paladin will use seal of light vs seal of wisdom)
 ``rfire``, ``rfrost``, ``rshadow``, ``rnature`` | resistance stragegies (paladin auras and hunter aspects)
 
+### Non-Combat Strategies
+
+strategy | description
+:---|:---|
+
 ### Defaults
 
-- Tank classes default w/ ``tank aoe``
+- Tank classes default w/ ``tank,aoe``
 - Non-tank classes default w/ ``attack weak``
 - Strategies that are incompatible, such as ``stay`` and ``follow``, are ignored
+
+### Override
+
+You can override stategies and instruct the bot to do something specific:
+
+strategy | description
+:---|:---|
+``do attack`` | attack target
+``do loot`` | loot target
 
 ## Movement
 
@@ -102,13 +108,20 @@ command | action
 
 command | action
 :---|:---
+``[item]`` | bot will tell you how many it has, and quest status
 ``e [item]`` | equip item
 ``ue [item]`` | unequip item
 ``u [item]`` | use item
 ``u [item] [target]`` | use item on target (use gem on item)
 ``destroy [item]`` | destroy item
-``[item]`` | add to trade window if trading, show if it is useful
+``s [item]`` | sell item
+``s *`` | sell all grey items
+``b [item]`` | buy item
 ``2g 3s 5c`` | give you gold
+``bank [item]`` | deposit item in bank
+``bank -[item]`` | withdraw item from back
+``gb [item]`` | deposit item in guild bank
+``gb -[item]`` | withdraw item from guild bank
 
 ## Quests
 
