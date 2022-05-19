@@ -10,9 +10,7 @@ Understand that there are two different types of bots available in the PlayerBot
 
 The following commands are meant to be put into the chat in either the party or raid channels.
 
-### Launch
-
-To bring your alts into the game:
+### Party
 
 command | action
 :---|:---
@@ -20,22 +18,15 @@ command | action
 ``.playerbots bot remove name1,name2,name3`` | logout these alts
 ``.playerbots bot add *`` |  login all alts
 ``.playerbots bot remove *`` | logout all alts
-
-### Respawn
-
-These commands only work when playing w/ random bots, not your alts:
-
-command | action
-:---|:---
-``.playerbots bot init=rare name1,name2,name3`` | respawn w/ your level, max talents, and rare gear
+``.playerbots bot init=rare name1,name2,name3`` | respawn w/ your level, max talents, and rare gear (random bots only)
 
 ### Behavior
 
 The bots are programmed to respond to triggers by listing possible actions and choosing one based on a strategy:
 
-- trigger - something has occured (target started using some abililty, has some aura, health became critical, etc)
-- action - something the bot can do (move, cast a spell, use an item, etc)
-- stragegy - which action is the best action (if target health became less than 20%, add hammer of wrath action with priority)
+- trigger - something has occured
+- action - something the bot can do
+- stragegy - which action is the best action
 
 Strategies can be combined, so they merge their effects to produce desired choices.  Bots use two strategy categories: combat and non-combat, depending on combat status.  You can add, subtract, or toggle strategies using the combat and non-combat prefixes in your commands:
 
@@ -55,7 +46,7 @@ Some strategies are incompatible with the others, such as ``stay`` and ``follow`
 
 
 category | prefix | strategy | description
-:---|:---:---|:---
+:---|:---|:---|:---
 non-combat | ``nc`` | ``tank assist`` | assist party players (including other bots in party) by attacking the most threating target. This is single tanking stategy.
 || ``tank aoe`` | Frequently switch target between targets. This is AOE tanking strategy. Note: some classes (paladin) will use aoe tanking abilities in combat so tank assist can have the same effect as tank aoe.
 || ``dps assist`` | Assist party players by attacking more threated target. This is single dps stategy.
