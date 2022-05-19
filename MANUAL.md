@@ -49,7 +49,7 @@ strategy | description
 ``dps`` |  use dps abilities (rogue, hunter, shaman, priest, druid will use ``cat``)
 ``assist`` | target one mob at a time
 ``aoe`` | target many mobs at a time
-``grind`` | Attack any visible target, then switch to another one and so on.
+``grind`` | attack any visible target, then switch to another one and so on.
 ``heal`` | focus on party healing (shaman, priest, druid)
 ``frost``, ``fire`` | mage only
 ``bear``, ``cat``, ``caster`` | druid only
@@ -61,33 +61,23 @@ strategy | description
 ### Non-Combat Strategies
 
 strategy | description
-:---|:---|
+:---|:---
 
 ### Defaults
 
-- Tank classes default w/ ``tank,aoe``
+- Tank classes default w/ ``tank aoe``
 - Non-tank classes default w/ ``attack weak``
 - Strategies that are incompatible, such as ``stay`` and ``follow``, are ignored
-
-### Override
-
-You can override stategies and instruct the bot to do something specific:
-
-strategy | description
-:---|:---|
-``do attack`` | attack target
-``do loot`` | loot target
 
 ## Movement
 
 command | action
 :---|:---
+``grind`` | attack anything
 ``follow`` | follow master
 ``stay`` | stay in place
 ``flee`` | flee with master (ignore everything else)
-``d attack my target`` | attack my target
-``d add all loot`` | check every corpse and game object for loot
-``grind`` | attack anything
+``runaway`` | kite mob
 
 ## Loot
 
@@ -151,6 +141,52 @@ command | action
 ``summon`` | summon bot at the inn
 ``release`` | release spirit when dead
 ``revive`` | revive when near a spirit healer
+
+## Overrides
+
+You can override everything and instruct the bot to do something specific:
+
+command | description
+:---|:---|
+``do attack`` | attack target
+``do loot`` | loot target
+``do attack my target`` | attack my target
+``do add all loot`` | check every corpse and game object for loot
+
+## Example Macros
+
+To make bots flee with you from the danger:
+
+```
+/p reset
+/p nc -stay,+follow,+passive
+/p co +passive
+/p do follow
+```
+
+To make bots follow you and assist you in attack:
+
+```
+/p nc -stay,+follow,-passive
+/p co -passive
+/p do follow
+```
+
+To make bots stay in place and assist you in attack:
+
+```
+/p nc -follow,+stay,+passive
+/p co +passive
+/p do stay
+```
+
+## Help
+
+The bot can tell you all available commands it will accept:
+
+```
+/w help
+```
 
 ## Reactions
 
