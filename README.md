@@ -26,6 +26,12 @@ Click on the bot character, making him your target, to bring up the control wind
 
 - Minor edits to original code to work w/ PlayerBots.
 - SelectedBotPanel only shows if RosterPanel is already open.
+- Added additional commands to the SelectedBotPanel.
+- Strategy buttons issue positive commands, reset buttons issue negative commands.
+
+## Todo
+
+- Attack by icon isn't on the panel atm.
 
 ## References
 

@@ -47,6 +47,7 @@ strategy | description
 :---|:---|
 ``tank`` | use threat-generating abilities (warrior, paladin, druid will use ``bear``)
 ``dps`` |  use dps abilities (rogue, hunter, shaman, priest, druid will use ``cat``)
+``caster`` | wasn't in docs but is in game
 ``assist`` | target one mob at a time
 ``aoe`` | target many mobs at a time
 ``grind`` | attack any visible target, then switch to another one and so on.
