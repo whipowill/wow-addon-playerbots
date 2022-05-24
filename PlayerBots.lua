@@ -409,10 +409,44 @@ function CreateSelectedBotPanel()
             tooltip = "Loot",
             index = 1
         },
-
+        ["loot_normal"] = {
+            icon = "ll_normal",
+            command = {[0] = "ll normal,?"},
+            ll = "normal",
+            tooltip = "Loot (if looting) normal",
+            index = 2
+        },
+        ["loot_all"] = {
+            icon = "ll_all",
+            command = {[0] = "ll all,?"},
+            ll = "all",
+            tooltip = "Loot (if looting) everything",
+            index = 3
+        },
+        ["loot_de"] = {
+            icon = "ll_disenchant",
+            command = {[0] = "ll disenchant,?"},
+            ll = "disenchant",
+            tooltip = "Loot (if looting) disenchant",
+            index = 4
+        },
+        ["loot_gray"] = {
+            icon = "ll_gray",
+            command = {[0] = "ll gray,?"},
+            ll = "gray",
+            tooltip = "Loot (if looting) gray",
+            index = 5
+        },
+        ["loot_skill"] = {
+            icon = "food",
+            command = {[0] = "ll skill,?"},
+            ll = "skill",
+            tooltip = "Loot (if looting) profession",
+            index = 6
+        },
         ["reset_actions"] = {
             icon = "passive",
-            command = {[0] = "nc -loot,?"},
+            command = {[0] = "nc -loot,?", [1] = "ll normal,?"},
             strategy = "",
             tooltip = "Reset actions",
             index = 8
@@ -502,9 +536,16 @@ function CreateSelectedBotPanel()
             tooltip = "Play as DPS",
             index = 2
         },
+        ["caster_aoe"] = {
+            icon = "caster_aoe",
+            command = {[0] = "nc +caster_aoe,?", [1] = "co +caster_aoe,?"},
+            strategy = "caster aoe",
+            tooltip = "Play as caster DPS",
+            index = 3
+        },
         ["reset_attacktype"] = {
             icon = "passive",
-            command = {[0] = "nc -tank aoe,-tank assist,-dps aoe,-dps assist,?", [1] = "co -tank aoe,-tank assist,-dps aoe,-dps assist,?"},
+            command = {[0] = "nc -tank aoe,-tank assist,-dps aoe,-dps assist,-caster aoe,-caster dps,?", [1] = "co -tank aoe,-tank assist,-dps aoe,-dps assist,-caster aoe,-caster dps,?"},
             strategy = "",
             tooltip = "Reset attacktype",
             index = 8
@@ -610,30 +651,37 @@ function CreateSelectedBotPanel()
             tooltip = "Conserve mana",
             index = 3
         },
+        ["buff"] = {
+            icon = "caster",
+            command = {[0] = "nc +buff,?", [1] = "co +buff,?"},
+            strategy = "buff",
+            tooltip = "Cast buffs",
+            index = 4
+        },
         ["attack_weak"] = {
             icon = "attack_weak",
             command = {[0] = "nc +attack weak,?", [1] = "co +attack weak,?"},
             strategy = "attack weak",
             tooltip = "Attack weak enemy first",
-            index = 4
+            index = 5
         },
         ["threat"] = {
             icon = "threat",
             command = {[0] = "co +threat,?"},
             strategy = "threat",
             tooltip = "Keep threat level low",
-            index = 5
+            index = 6
         },
         ["custom_say"] = {
             icon = "whisper",
             command = {[0] = "nc +custom::say,?", [1] = "co +custom::say,?"},
             strategy = "custom::say",
             tooltip = "Say custom lines",
-            index = 6
+            index = 7
         },
         ["reset_generic"] = {
             icon = "passive",
-            command = {[0] = "nc -potions,-food,-cast time,-conserve mana,-attack weak,-custom::say,?", [1] = "co -potions,-food,-cast time,-conserve mana,-attack weak,-threat,-custom::say,?"},
+            command = {[0] = "nc -potions,-food,-cast time,-conserve mana,-attack weak,-custom::say,-buff,?", [1] = "co -potions,-food,-cast time,-conserve mana,-attack weak,-threat,-custom::say,-buff,?"},
             strategy = "",
             tooltip = "Reset generic",
             index = 8
@@ -1048,9 +1096,10 @@ PlayerBots_EventFrame:SetScript("OnEvent", function(self, event, ...)
         if (name == nil or not UnitIsPlayer("target") or name == self or UnitIsEnemy(self, name)) then
             SelectedBotPanel:Hide()
         else
-            wait(0.1, function() SendChatMessage("nc ?", "WHISPER", nil, name) end)
-            wait(0.2, function() SendChatMessage("co ?", "WHISPER", nil, name) end)
-            wait(0.3, function() SendChatMessage("formation ?", "WHISPER", nil, name) end)
+            wait(0, function() SendChatMessage("nc ?", "WHISPER", nil, name) end)
+            wait(1, function() SendChatMessage("co ?", "WHISPER", nil, name) end)
+            wait(2, function() SendChatMessage("formation ?", "WHISPER", nil, name) end)
+            wait(3, function() SendChatMessage("ll ?", "WHISPER", nil, name) end)
             --wait(0.8, function() SendChatMessage("rti ?", "WHISPER", nil, name) end)
         end
     end
@@ -1280,6 +1329,9 @@ PlayerBots_EventFrame:SetScript("OnEvent", function(self, event, ...)
                     if (button["rti"] ~= nil and bot["rti"] ~= nil and string.find(bot["rti"], button["rti"]) ~= nil) then
                         toggle = true
                     end
+                    if (button["ll"] ~= nil and bot["ll"] ~= nil and string.find(bot["ll"], button["ll"]) ~= nil) then
+                        toggle = true
+                    end
                     ToggleButton(SelectedBotPanel, toolbarName, buttonName, toggle)
                     numButtons = numButtons + 1
                 end
@@ -1337,6 +1389,9 @@ function OnWhisper(message, sender)
     end
     if (string.find(message, 'RTI: ') == 1) then
         bot['rti'] = string.sub(message, 5)
+    end
+    if (string.find(message, 'Loot strategy: ') == 1) then
+        bot['ll'] = string.sub(message, 15)
     end
 end
 
