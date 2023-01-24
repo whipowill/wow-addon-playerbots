@@ -1,8 +1,13 @@
-## Interface: 30305
+## Interface: 30300
 ## Title: PlayerBots
+## Title-zhCN: PlayerBot UI
 ## Author: ike3 & whipowill
 ## Notes: PlayerBot UI
+## Notes-zhCN: |cff00ff00PlayerBot UI|r                                             |cffbc8f8f玩家机器人控制器。输入/bot启动|r
 ## DefaultState: Enabled
 ## LoadOnDemand: 0
 ## SavedVariables: frameopts
+
+localization-enUS.lua
+localization-zhCN.lua
 PlayerBots.lua
