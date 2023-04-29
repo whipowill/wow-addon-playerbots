@@ -1463,4 +1463,4 @@ function wait(delay, func, ...)
   return true;
 end
 
-print("PlayerBots Addon is loaded");
+print(i18n("PlayerBots Addon is loaded"))
