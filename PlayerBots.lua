@@ -5,6 +5,9 @@ PlayerBots_EventFrame:RegisterEvent("CHAT_MSG_SYSTEM")
 PlayerBots_EventFrame:RegisterEvent("UPDATE")
 PlayerBots_EventFrame:Hide()
 
+PlayerBots.InitLocale()
+local i18n = PlayerBots.I18n
+
 local ToolBars = {}
 function CreateToolBar(frame, y, name, buttons, x, spacing, register)
     if (x == nil) then x = 5 end
@@ -210,34 +213,34 @@ function CreateBotRoster()
                 icon = "login",
                 command = {[0] = ""},
                 strategy = "",
-                tooltip = "Bring bot online",
+                tooltip = i18n("Bring bot online"),
                 index = 0
             },
             ["logout"] = {
                 icon = "logout",
                 command = {[0] = ""},
-                tooltip = "Logout bot",
+                tooltip = i18n("Logout bot"),
                 strategy = "",
                 index = 0
             },
             ["invite"] = {
                 icon = "invite",
                 command = {[0] = ""},
-                tooltip = "Invite to your group",
+                tooltip = i18n("Invite to your group"),
                 strategy = "",
                 index = 1
             },
             ["leave"] = {
                 icon = "leave",
                 command = {[0] = ""},
-                tooltip = "Remove from group",
+                tooltip = i18n("Remove from group"),
                 strategy = "",
                 index = 1
             },
             ["whisper"] = {
                 icon = "whisper",
                 command = {[0] = ""},
-                tooltip = "Start whisper chat",
+                tooltip = i18n("Start whisper chat"),
                 strategy = "",
                 index = 2
             }
@@ -259,27 +262,27 @@ function CreateBotRoster()
             icon = "login",
             command = {[0] = ""},
             strategy = "",
-            tooltip = "Bring all bots online",
+            tooltip = i18n("Bring all bots online"),
             index = 0
         },
         ["logout_all"] = {
             icon = "logout",
             command = {[0] = ""},
-            tooltip = "Logout all bots",
+            tooltip = i18n("Logout all bots"),
             strategy = "",
             index = 1
         },
         ["invite_all"] = {
             icon = "invite",
             command = {[0] = ""},
-            tooltip = "Invite all bots to your group",
+            tooltip = i18n("Invite all bots to your group"),
             strategy = "",
             index = 2
         },
         ["leave_all"] = {
             icon = "leave",
             command = {[0] = ""},
-            tooltip = "Remove all bots from group",
+            tooltip = i18n("Remove all bots from group"),
             strategy = "",
             index = 3
         }
@@ -346,49 +349,49 @@ function CreateSelectedBotPanel()
             icon = "follow_master",
             command = {[0] = "nc +follow,?"},
             strategy = "follow",
-            tooltip = "Follow",
+            tooltip = i18n("Follow"),
             index = 0
         },
         ["stay"] = {
             icon = "stay",
             command = {[0] = "nc +stay,?"},
             strategy = "stay",
-            tooltip = "Stay",
+            tooltip = i18n("Stay"),
             index = 1
         },
         ["set_guard"] = {
             icon = "set_guard",
             command = {[0] = "position guard"},
             strategy = "",
-            tooltip = "Set guard position",
+            tooltip = i18n("Set guard position"),
             index = 2
         },
         ["guard"] = {
             icon = "guard",
             command = {[0] = "nc +guard,?"},
             strategy = "guard",
-            tooltip = "Guard",
+            tooltip = i18n("Guard"),
             index = 3
         },
         ["grind"] = {
             icon = "grind",
             command = {[0] = "nc +grind,?", [1] = "co +grind,?"},
             strategy = "grind",
-            tooltip = "Aggresive mode",
+            tooltip = i18n("Aggresive mode"),
             index = 4
         },
         ["passive"] = {
             icon = "flee",
             command = {[0] = "nc +passive,?", [1] = "co +passive,?"},
             strategy = "passive",
-            tooltip = "Passive mode",
+            tooltip = i18n("Passive mode"),
             index = 5
         },
         ["reset_movement"] = {
             icon = "passive",
             command = {[0] = "nc -follow,-stay,-guard,-grind,-passive,?", [1] = "co -grind,-passive,?"},
             strategy = "",
-            tooltip = "Reset movement",
+            tooltip = i18n("Reset movement"),
             index = 8
         },
     })
@@ -399,56 +402,56 @@ function CreateSelectedBotPanel()
             icon = "stats",
             command = {[0] = "stats"},
             strategy = "",
-            tooltip = "Stats",
+            tooltip = i18n("Stats"),
             index = 0
         },
         ["loot"] = {
             icon = "loot",
             command = {[0] = "nc +loot,?"},
             strategy = "loot",
-            tooltip = "Loot",
+            tooltip = i18n("Loot"),
             index = 1
         },
         ["loot_normal"] = {
             icon = "ll_normal",
             command = {[0] = "ll normal,?"},
             ll = "normal",
-            tooltip = "Loot (if looting) normal",
+            tooltip = i18n("Loot (if looting) normal"),
             index = 2
         },
         ["loot_all"] = {
             icon = "ll_all",
             command = {[0] = "ll all,?"},
             ll = "all",
-            tooltip = "Loot (if looting) everything",
+            tooltip = i18n("Loot (if looting) everything"),
             index = 3
         },
         ["loot_de"] = {
             icon = "ll_disenchant",
             command = {[0] = "ll disenchant,?"},
             ll = "disenchant",
-            tooltip = "Loot (if looting) disenchant",
+            tooltip = i18n("Loot (if looting) disenchant"),
             index = 4
         },
         ["loot_gray"] = {
             icon = "ll_gray",
             command = {[0] = "ll gray,?"},
             ll = "gray",
-            tooltip = "Loot (if looting) gray",
+            tooltip = i18n("Loot (if looting) gray"),
             index = 5
         },
         ["loot_skill"] = {
             icon = "food",
             command = {[0] = "ll skill,?"},
             ll = "skill",
-            tooltip = "Loot (if looting) profession",
+            tooltip = i18n("Loot (if looting) profession"),
             index = 6
         },
         ["reset_actions"] = {
             icon = "passive",
             command = {[0] = "nc -loot,?", [1] = "ll normal,?"},
             strategy = "",
-            tooltip = "Reset actions",
+            tooltip = i18n("Reset actions"),
             index = 8
         },
     })
@@ -459,56 +462,56 @@ function CreateSelectedBotPanel()
             icon = "formation_near",
             command = {[0] = "formation near"},
             formation = "near",
-            tooltip = "Formation near",
+            tooltip = i18n("Formation near"),
             index = 0
         },
         ["melee"] = {
             icon = "formation_melee",
             command = {[0] = "formation melee"},
             formation = "melee",
-            tooltip = "Formation melee",
+            tooltip = i18n("Formation melee"),
             index = 1
         },
         ["line"] = {
             icon = "formation_line",
             command = {[0] = "formation line"},
             formation = "line",
-            tooltip = "Formation line",
+            tooltip = i18n("Formation line"),
             index = 2
         },
         ["circle"] = {
             icon = "formation_circle",
             command = {[0] = "formation circle"},
             formation = "circle",
-            tooltip = "Formation circle",
+            tooltip = i18n("Formation circle"),
             index = 3
         },
         ["arrow"] = {
             icon = "formation_arrow",
             command = {[0] = "formation arrow"},
             formation = "arrow",
-            tooltip = "Formation arrow",
+            tooltip = i18n("Formation arrow"),
             index = 4
         },
         ["far"] = {
             icon = "formation_far",
             command = {[0] = "formation far"},
             formation = "far",
-            tooltip = "Formation far",
+            tooltip = i18n("Formation far"),
             index = 5
         },
         ["chaos"] = {
             icon = "formation_chaos",
             command = {[0] = "formation chaos"},
             formation = "chaos",
-            tooltip = "Formation chaos",
+            tooltip = i18n("Formation chaos"),
             index = 6
         },
         ["reset_formation"] = {
             icon = "passive",
             command = {[0] = "formation near"},
             strategy = "",
-            tooltip = "Reset formations",
+            tooltip = i18n("Reset formations"),
             index = 8
         },
     })
@@ -519,35 +522,35 @@ function CreateSelectedBotPanel()
             icon = "tank_aoe",
             command = {[0] = "nc +tank aoe,?", [1] = "co +tank aoe,?"},
             strategy = "tank aoe",
-            tooltip = "Play as primary tank",
+            tooltip = i18n("Play as primary tank"),
             index = 0
         },
         ["tank_assist"] = {
             icon = "tank_assist",
             command = {[0] = "nc +tank assist,?", [1] = "co +tank assist,?"},
             strategy = "tank assist",
-            tooltip = "Play as secondary tank",
+            tooltip = i18n("Play as secondary tank"),
             index = 1
         },
         ["dps_assist"] = {
             icon = "dps_assist",
             command = {[0] = "nc +dps assist,?", [1] = "co +dps assist,?"},
             strategy = "dps assist",
-            tooltip = "Play as DPS",
+            tooltip = i18n("Play as DPS"),
             index = 2
         },
         ["caster_aoe"] = {
             icon = "caster_aoe",
             command = {[0] = "nc +caster_aoe,?", [1] = "co +caster_aoe,?"},
             strategy = "caster aoe",
-            tooltip = "Play as caster DPS",
+            tooltip = i18n("Play as caster DPS"),
             index = 3
         },
         ["reset_attacktype"] = {
             icon = "passive",
             command = {[0] = "nc -tank aoe,-tank assist,-dps aoe,-dps assist,-caster aoe,-caster dps,?", [1] = "co -tank aoe,-tank assist,-dps aoe,-dps assist,-caster aoe,-caster dps,?"},
             strategy = "",
-            tooltip = "Reset attacktype",
+            tooltip = i18n("Reset attacktype"),
             index = 8
         }
     })
@@ -559,63 +562,63 @@ function CreateSelectedBotPanel()
             icon = "attack_rti",
             command = {[0] = "nc +attack rti,?",[1] = "co +attack rti,?"},
             strategy = "attack rti",
-            tooltip = "Attack enemy with assigned mark",
+            tooltip = i18n("Attack enemy with assigned mark"),
             index = 0
         },
         ["rti_skull"] = {
             icon = "rti_skull",
             command = {[0] = "rti skull"},
             rti = "skull",
-            tooltip = "Assign skull mark",
+            tooltip = i18n("Assign skull mark"),
             index = 1
         },
         ["rti_cross"] = {
             icon = "rti_cross",
             command = {[0] = "rti cross"},
             rti = "cross",
-            tooltip = "Assign cross mark",
+            tooltip = i18n("Assign cross mark"),
             index = 2
         },
         ["rti_circle"] = {
             icon = "rti_circle",
             command = {[0] = "rti circle"},
             rti = "circle",
-            tooltip = "Assign circle mark",
+            tooltip = i18n("Assign circle mark"),
             index = 3
         },
         ["rti_star"] = {
             icon = "rti_star",
             command = {[0] = "rti star"},
             rti = "star",
-            tooltip = "Assign star mark",
+            tooltip = i18n("Assign star mark"),
             index = 4
         },
         ["rti_square"] = {
             icon = "rti_square",
             command = {[0] = "rti square"},
             rti = "square",
-            tooltip = "Assign square mark",
+            tooltip = i18n("Assign square mark"),
             index = 5
         },
         ["rti_triangle"] = {
             icon = "rti_triangle",
             command = {[0] = "rti triangle"},
             rti = "triangle",
-            tooltip = "Assign triangle mark",
+            tooltip = i18n("Assign triangle mark"),
             index = 6
         },
         ["rti_diamond"] = {
             icon = "rti_diamond",
             command = {[0] = "rti diamond"},
             rti = "diamond",
-            tooltip = "Assign diamond mark",
+            tooltip = i18n("Assign diamond mark"),
             index = 7
         },
         ["rti_moon"] = {
             icon = "rti_moon",
             command = {[0] = "rti moon"},
             rti = "moon",
-            tooltip = "Assign moon mark",
+            tooltip = i18n("Assign moon mark"),
             index = 8
         }
     })
@@ -627,63 +630,63 @@ function CreateSelectedBotPanel()
             icon = "potions",
             command = {[0] = "co +potions,?"},
             strategy = "potions",
-            tooltip = "Use health and mana potions",
+            tooltip = i18n("Use health and mana potions"),
             index = 0
         },
         ["food"] = {
             icon = "food",
             command = {[0] = "nc +food,?"},
             strategy = "food",
-            tooltip = "Use food and drinks",
+            tooltip = i18n("Use food and drinks"),
             index = 1
         },
         ["cast_time"] = {
             icon = "cast_time",
             command = {[0] = "co +cast time,?"},
             strategy = "cast time",
-            tooltip = "Cast long spells cautiously",
+            tooltip = i18n("Cast long spells cautiously"),
             index = 2
         },
         ["conserve_mana"] = {
             icon = "conserve_mana",
             command = {[0] = "nc +conserve mana,?", [1] = "co +conserve mana,?"},
             strategy = "conserve mana",
-            tooltip = "Conserve mana",
+            tooltip = i18n("Conserve mana"),
             index = 3
         },
         ["buff"] = {
             icon = "caster",
             command = {[0] = "nc +buff,?", [1] = "co +buff,?"},
             strategy = "buff",
-            tooltip = "Cast buffs",
+            tooltip = i18n("Cast buffs"),
             index = 4
         },
         ["attack_weak"] = {
             icon = "attack_weak",
             command = {[0] = "nc +attack weak,?", [1] = "co +attack weak,?"},
             strategy = "attack weak",
-            tooltip = "Attack weak enemy first",
+            tooltip = i18n("Attack weak enemy first"),
             index = 5
         },
         ["threat"] = {
             icon = "threat",
             command = {[0] = "co +threat,?"},
             strategy = "threat",
-            tooltip = "Keep threat level low",
+            tooltip = i18n("Keep threat level low"),
             index = 6
         },
         ["custom_say"] = {
             icon = "whisper",
             command = {[0] = "nc +custom::say,?", [1] = "co +custom::say,?"},
             strategy = "custom::say",
-            tooltip = "Say custom lines",
+            tooltip = i18n("Say custom lines"),
             index = 7
         },
         ["reset_generic"] = {
             icon = "passive",
             command = {[0] = "nc -potions,-food,-cast time,-conserve mana,-attack weak,-custom::say,-buff,?", [1] = "co -potions,-food,-cast time,-conserve mana,-attack weak,-threat,-custom::say,-buff,?"},
             strategy = "",
-            tooltip = "Reset generic",
+            tooltip = i18n("Reset generic"),
             index = 8
         }
     })
@@ -694,35 +697,35 @@ function CreateSelectedBotPanel()
             icon = "bear",
             command = {[0] = "co +bear,?", [1] = "nc +bear,?"},
             strategy = "bear",
-            tooltip = "Use bear form",
+            tooltip = i18n("Use bear form"),
             index = 0
         },
         ["cat"] = {
             icon = "cat",
             command = {[0] = "co +cat,?", [1] = "nc +cat,?"},
             strategy = "cat",
-            tooltip = "Use cat form",
+            tooltip = i18n("Use cat form"),
             index = 1
         },
         ["caster"] = {
             icon = "caster",
             command = {[0] = "co +caster,?", [1] = "nc +caster,?"},
             strategy = "caster",
-            tooltip = "Use owl form",
+            tooltip = i18n("Use owl form"),
             index = 2
         },
         ["heal"] = {
             icon = "heal",
             command = {[0] = "co +heal,?", [1] = "nc +heal,?"},
             strategy = "heal",
-            tooltip = "Healer mode",
+            tooltip = i18n("Healer mode"),
             index = 3
         },
         ["reset_druid"] = {
             icon = "passive",
             command = {[0] = "nc -bear,-cat,-caster,-heal,?", [1] = "co -bear,-cat,-caster,-heal,?"},
             strategy = "",
-            tooltip = "Reset class",
+            tooltip = i18n("Reset class"),
             index = 8
         }
     })
@@ -731,35 +734,35 @@ function CreateSelectedBotPanel()
             icon = "dps",
             command = {[0] = "co +dps,?"},
             strategy = "dps",
-            tooltip = "DPS mode",
+            tooltip = i18n("DPS mode"),
             index = 0
         },
         ["bspeed"] = {
             icon = "bspeed",
             command = {[0] = "co +bspeed,?", [1] = "nc +bspeed,?"},
             strategy = "bspeed",
-            tooltip = "Buff movement speed",
+            tooltip = i18n("Buff movement speed"),
             index = 1
         },
         ["bmana"] = {
             icon = "bmana",
             command = {[0] = "co +bmana,?", [1] = "nc +bmana,?"},
             strategy = "bmana",
-            tooltip = "Buff mana regen",
+            tooltip = i18n("Buff mana regen"),
             index = 2
         },
         ["bdps"] = {
             icon = "bdps",
             command = {[0] = "co +bdps,?", [1] = "nc +bdps,?"},
             strategy = "bdps",
-            tooltip = "Buff DPS",
+            tooltip = i18n("Buff DPS"),
             index = 3
         },
         ["reset_hunter"] = {
             icon = "passive",
             command = {[0] = "nc -dps,-bspeed,-bmana,-bdps,?", [1] = "co -dps,-bspeed,-bmana,-bdps,?"},
             strategy = "",
-            tooltip = "Reset class",
+            tooltip = i18n("Reset class"),
             index = 8
         }
     })
@@ -768,56 +771,56 @@ function CreateSelectedBotPanel()
             icon = "arcane",
             command = {[0] = "co +arcane,?"},
             strategy = "arcane",
-            tooltip = "Use arcane spells",
+            tooltip = i18n("Use arcane spells"),
             index = 0
         },
         ["fire"] = {
             icon = "fire",
             command = {[0] = "co +fire,?"},
             strategy = "fire",
-            tooltip = "Use fire spells",
+            tooltip = i18n("Use fire spells"),
             index = 1
         },
         ["fire_aoe"] = {
             icon = "fire_aoe",
             command = {[0] = "co +fire aoe,?"},
             strategy = "fire aoe",
-            tooltip = "Use fire AOE abilities",
+            tooltip = i18n("Use fire AOE abilities"),
             index = 2
         },
         ["frost"] = {
             icon = "frost",
             command = {[0] = "co +frost,?"},
             strategy = "frost",
-            tooltip = "Use frost spells",
+            tooltip = i18n("Use frost spells"),
             index = 3
         },
         ["frost_aoe"] = {
             icon = "frost_aoe",
             command = {[0] = "co +frost aoe,?"},
             strategy = "frost aoe",
-            tooltip = "Use frost AOE abilities",
+            tooltip = i18n("Use frost AOE abilities"),
             index = 4
         },
         ["bmana"] = {
             icon = "bmana",
             command = {[0] = "co +bmana,?", [1] = "nc +bmana,?"},
             strategy = "bmana",
-            tooltip = "Buff mana regen",
+            tooltip = i18n("Buff mana regen"),
             index = 5
         },
         ["bdps"] = {
             icon = "bdps",
             command = {[0] = "co +bdps,?", [1] = "nc +bdps,?"},
             strategy = "bdps",
-            tooltip = "Buff DPS",
+            tooltip = i18n("Buff DPS"),
             index = 6
         },
         ["reset_mage"] = {
             icon = "passive",
             command = {[0] = "nc -bmana,-bdps,?", [1] = "co -arcane,-fire,-fire aoe,-frost,-frost aoe,-bmana,-bdps,?"},
             strategy = "",
-            tooltip = "Reset class",
+            tooltip = i18n("Reset class"),
             index = 8
         }
     })
@@ -826,63 +829,63 @@ function CreateSelectedBotPanel()
             icon = "dps",
             command = {[0] = "co +dps,?"},
             strategy = "dps",
-            tooltip = "DPS mode",
+            tooltip = i18n("DPS mode"),
             index = 0
         },
         ["tank"] = {
             icon = "tank",
             command = {[0] = "co +tank,?"},
             strategy = "tank",
-            tooltip = "Tank mode",
+            tooltip = i18n("Tank mode"),
             index = 1
         },
         ["bmana"] = {
             icon = "bmana",
             command = {[0] = "co +bmana,?", [1] = "nc +bmana,?"},
             strategy = "bmana",
-            tooltip = "Buff mana regen",
+            tooltip = i18n("Buff mana regen"),
             index = 2
         },
         ["bhealth"] = {
             icon = "bhealth",
             command = {[0] = "co +bhealth,?"},
             strategy = "bhealth",
-            tooltip = "Buff health regen",
+            tooltip = i18n("Buff health regen"),
             index = 3
         },
         ["bdps"] = {
             icon = "bdps",
             command = {[0] = "co +bdps,?", [1] = "nc +bdps,?"},
             strategy = "bdps",
-            tooltip = "Buff DPS",
+            tooltip = i18n("Buff DPS"),
             index = 4
         },
         ["barmor"] = {
             icon = "barmor",
             command = {[0] = "co +barmor,?", [1] = "nc +barmor,?"},
             strategy = "barmor",
-            tooltip = "Buff armor",
+            tooltip = i18n("Buff armor"),
             index = 5
         },
         ["bspeed"] = {
             icon = "bspeed",
             command = {[0] = "co +bspeed,?", [1] = "nc +bspeed,?"},
             strategy = "bspeed",
-            tooltip = "Buff movement speed",
+            tooltip = i18n("Buff movement speed"),
             index = 6
         },
         ["bthreat"] = {
             icon = "bthreat",
             command = {[0] = "co +bthreat,?", [1] = "nc +bthreat,?"},
             strategy = "bthreat",
-            tooltip = "Buff threat generation",
+            tooltip = i18n("Buff threat generation"),
             index = 7
         },
         ["reset_paladin"] = {
             icon = "passive",
             command = {[0] = "nc -bmana,-bdps,-barmor,-bspeed,-bthreat,?", [1] = "co -dps,-tank,-bmana,-bhealth,-bdps,-barmor,-bspeed,-bthreat,?"},
             strategy = "",
-            tooltip = "Reset class",
+            tooltip = i18n("Reset class"),
             index = 8
         }
     })
@@ -891,42 +894,42 @@ function CreateSelectedBotPanel()
             icon = "heal",
             command = {[0] = "nc +heal,?", [1] = "co +heal,?"},
             strategy = "heal",
-            tooltip = "Healer mode",
+            tooltip = i18n("Healer mode"),
             index = 0
         },
         ["holy"] = {
             icon = "holy",
             command = {[0] = "co +holy,?"},
             strategy = "holy",
-            tooltip = "Use holy spells",
+            tooltip = i18n("Use holy spells"),
             index = 1
         },
         ["shadow"] = {
             icon = "shadow",
             command = {[0] = "co +shadow,?"},
             strategy = "shadow",
-            tooltip = "Shadow",
+            tooltip = i18n("Shadow"),
             index = 2
         },
         ["shadow_aoe"] = {
             icon = "shadow_aoe",
             command = {[0] = "co +shadow aoe,?"},
             strategy = "shadow aoe",
-            tooltip = "Use shadow AOE abilities",
+            tooltip = i18n("Use shadow AOE abilities"),
             index = 3
         },
         ["shadow_debuff"] = {
             icon = "shadow_debuff",
             command = {[0] = "co +shadow debuff,?"},
             strategy = "shadow debuff",
-            tooltip = "Use shadow debuffs",
+            tooltip = i18n("Use shadow debuffs"),
             index = 4
         },
         ["reset_priest"] = {
             icon = "passive",
             command = {[0] = "nc -heal,?", [1] = "co -heal,-holy,-shadow,-shadow aoe,-shadow debuff,?"},
             strategy = "",
-            tooltip = "Reset class",
+            tooltip = i18n("Reset class"),
             index = 8
         }
     })
@@ -935,14 +938,14 @@ function CreateSelectedBotPanel()
             icon = "dps",
             command = {[0] = "co +dps,?"},
             strategy = "dps",
-            tooltip = "DPS mode",
+            tooltip = i18n("DPS mode"),
             index = 0
         },
         ["reset_rogue"] = {
             icon = "passive",
             command = {[0] = "co -dps,?"},
             strategy = "",
-            tooltip = "Reset class",
+            tooltip = i18n("Reset class"),
             index = 8
         }
     })
@@ -951,56 +954,56 @@ function CreateSelectedBotPanel()
             icon = "caster",
             command = {[0] = "co +caster,?"},
             strategy = "caster",
-            tooltip = "Caster mode",
+            tooltip = i18n("Caster mode"),
             index = 0
         },
         ["caster_aoe"] = {
             icon = "caster_aoe",
             command = {[0] = "co +caster aoe,?"},
             strategy = "caster aoe",
-            tooltip = "Use caster AOE abilities",
+            tooltip = i18n("Use caster AOE abilities"),
             index = 1
         },
         ["heal"] = {
             icon = "heal",
             command = {[0] = "co +heal,?"},
             strategy = "heal",
-            tooltip = "Healer mode",
+            tooltip = i18n("Healer mode"),
             index = 2
         },
         ["melee"] = {
             icon = "dps",
             command = {[0] = "co +melee,?"},
             strategy = "melee",
-            tooltip = "Melee mode",
+            tooltip = i18n("Melee mode"),
             index = 3
         },
         ["totems"] = {
             icon = "totems",
             command = {[0] = "co +totems,?"},
             strategy = "totems",
-            tooltip = "Use totems",
+            tooltip = i18n("Use totems"),
             index = 4
         },
         ["bmana"] = {
             icon = "bmana",
             command = {[0] = "co +bmana,?", [1] = "nc +bmana,?"},
             strategy = "bmana",
-            tooltip = "Buff mana regen",
+            tooltip = i18n("Buff mana regen"),
             index = 5
         },
         ["bdps"] = {
             icon = "bdps",
             command = {[0] = "co +bdps,?", [1] = "nc +bdps,?"},
             strategy = "bdps",
-            tooltip = "Buff DPS",
+            tooltip = i18n("Buff DPS"),
             index = 6
         },
         ["reset_shaman"] = {
             icon = "passive",
             command = {[0] = "nc -bmana,-bdps,?", [1] = "co -caster,-caster aoe,-heal,-melee,-totems,-bmana,-bdps,?"},
             strategy = "",
-            tooltip = "Reset class",
+            tooltip = i18n("Reset class"),
             index = 8
         }
     })
@@ -1009,35 +1012,35 @@ function CreateSelectedBotPanel()
             icon = "dps",
             command = {[0] = "co +dps,?"},
             strategy = "dps",
-            tooltip = "DPS mode",
+            tooltip = i18n("DPS mode"),
             index = 0
         },
         ["dps_debuff"] = {
             icon = "dps_debuff",
             command = {[0] = "co +dps debuff,?"},
             strategy = "dps debuff",
-            tooltip = "Use DPS debuffs",
+            tooltip = i18n("Use DPS debuffs"),
             index = 1
         },
         ["caster_aoe"] = {
             icon = "caster_aoe",
             command = {[0] = "co +aoe,?"},
             strategy = "aoe",
-            tooltip = "Use AOE abilities",
+            tooltip = i18n("Use AOE abilities"),
             index = 2
         },
         ["tank"] = {
             icon = "tank",
             command = {[0] = "co +tank,?"},
             strategy = "tank",
-            tooltip = "Tank mode",
+            tooltip = i18n("Tank mode"),
             index = 3
         },
         ["reset_warlock"] = {
             icon = "passive",
             command = {[0] = "co -dps debuff,-aoe,-tank,?"},
             strategy = "",
-            tooltip = "Reset class",
+            tooltip = i18n("Reset class"),
             index = 8
         }
     })
@@ -1046,28 +1049,28 @@ function CreateSelectedBotPanel()
             icon = "dps",
             command = {[0] = "co +dps,?"},
             strategy = "dps",
-            tooltip = "DPS mode",
+            tooltip = i18n("DPS mode"),
             index = 0
         },
         ["warrior_aoe"] = {
             icon = "warrior_aoe",
             command = {[0] = "co +aoe,?"},
             strategy = "aoe",
-            tooltip = "Use AOE abilities",
+            tooltip = i18n("Use AOE abilities"),
             index = 1
         },
         ["tank"] = {
             icon = "tank",
             command = {[0] = "co +tank,?"},
             strategy = "tank",
-            tooltip = "Tank mode",
+            tooltip = i18n("Tank mode"),
             index = 2
         },
         ["reset_warrior"] = {
             icon = "passive",
             command = {[0] = "co -dps,-aoe,-tank,?"},
             strategy = "",
-            tooltip = "Reset class",
+            tooltip = i18n("Reset class"),
             index = 8
         }
     })
@@ -1460,4 +1463,4 @@ function wait(delay, func, ...)
   return true;
 end
 
-print("PlayerBots Addon is loaded");
+print(i18n("PlayerBots Addon is loaded"))
